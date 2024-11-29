@@ -5,6 +5,9 @@
 #include "stringiterator.h"
 #include "woopsistring.h"
 
+// vasprintf implementation, missing in libnds 2.0
+#include "vasprintf.h"
+
 using namespace WoopsiUI;
 
 WoopsiString::WoopsiString() {
