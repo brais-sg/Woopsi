@@ -99,6 +99,13 @@ clean:
 	@rm -fr $(BUILD) lib
 
 #---------------------------------------------------------------------------------
+
+install: $(OUTPUT)
+	@echo Installing library and headers...
+	@mkdir -p $(DEVKITPRO)/portlibs/nds/lib
+	@mkdir -p $(DEVKITPRO)/portlibs/nds/include/libwhoopsi
+	@cp $(OUTPUT) $(DEVKITPRO)/portlibs/nds/lib
+	@cp -r $(CURDIR)/include/* $(DEVKITPRO)/portlibs/nds/include/libwhoopsi
 else
 
 DEPENDS	:=	$(OFILES:.o=.d)
