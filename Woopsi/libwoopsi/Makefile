@@ -17,7 +17,7 @@ include $(DEVKITARM)/ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	src
+SOURCES		:=	src src/fonts
 DATA		:=	data
 INCLUDES	:=	include include/fonts
 
@@ -48,7 +48,7 @@ LIBDIRS	:=	$(LIBNDS)
 ifneq ($(BUILD),$(notdir $(CURDIR)))
 #---------------------------------------------------------------------------------
 
-export OUTPUT	:=	$(CURDIR)/lib/lib$(TARGET).a
+export OUTPUT	:=	$(CURDIR)/lib/$(TARGET).a
 
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
 			$(foreach dir,$(DATA),$(CURDIR)/$(dir))
@@ -103,9 +103,9 @@ clean:
 install: $(OUTPUT)
 	@echo Installing library and headers...
 	@mkdir -p $(DEVKITPRO)/portlibs/nds/lib
-	@mkdir -p $(DEVKITPRO)/portlibs/nds/include/libwhoopsi
-	@cp $(OUTPUT) $(DEVKITPRO)/portlibs/nds/lib
-	@cp -r $(CURDIR)/include/* $(DEVKITPRO)/portlibs/nds/include/libwhoopsi
+	@mkdir -p $(DEVKITPRO)/portlibs/nds/include/woopsi
+	@cp $(OUTPUT) $(DEVKITPRO)/portlibs/nds/lib/
+	@cp -r $(CURDIR)/include/* $(DEVKITPRO)/portlibs/nds/include/woopsi
 else
 
 DEPENDS	:=	$(OFILES:.o=.d)
