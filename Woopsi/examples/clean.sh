@@ -7,6 +7,5 @@ Dirlist=$(ls -d */)
 for direc in $Dirlist ; do
 	cd $direc
 	make clean
-	make
 	cd ..
 done
